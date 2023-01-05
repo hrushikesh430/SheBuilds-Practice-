@@ -1,16 +1,20 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import mongoose from  'mongoose'
-import bodyParser from 'body-parser';
+const express = require("express")
+const dotenv = require("dotenv")
+const mongoose = require("mongoose")
+const bodyParser = require("body-parser")
+const errorHandler = require("./middleware/errorHandler")
+const tryCatch = require("./utils/tryCatch")
+const AppError = require("./utils/AppError")
+const route = require("./routes/route")
 dotenv.config();
 const app = express();
 const PORT = 5000 || process.env.PORT;
 
 
-//body-parser
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+
+// Body-parser middleware
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 
 // connecting db
 mongoose.set('strictQuery', false);
@@ -24,12 +28,32 @@ console.log(mongoose.connection.readyState);
 // serving static files
 app.use(express.static('public'));
 app.set('view engine','ejs');
-app.get('/',(req,res)=>{
-  res.send("hello");
-});
+
+
+const getUser = ()=> undefined;
+
+app.get('/', tryCatch( async (req,res,next)=>{
+
+    
+        const user = getUser();
+        console.log(user)
+        if(!user){
+            throw new AppError(300,"this is AppError",400);
+        }
+
+
+ 
+      res.send("hello");
+})
+);
 app.get('/home',(req,res)=>{
   res.render('layout',{name:"my name is thapa"});
 });
+
+//middleware
+app.use(errorHandler);
+app.use('/v1/api',route)
+
 
 
 

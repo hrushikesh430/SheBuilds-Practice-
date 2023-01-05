@@ -1,33 +1,37 @@
 const express =require("express");
 const ejs=require("ejs");
-const bodyparser=require("body-parser");
+const app = express();
+const bodyParser = require("body-parser")
 const mongoose=require("mongoose");
 const dotenv=require("dotenv");
-
 dotenv.config();
-const app = express();
-//body-parser
-app.use(bodyparser.urlencoded({
-  extended: true
-}));
+const User = require('../model/User')
+const AppError = require("../utils/AppError")
+const tryCatch = require("../utils/tryCatch")
+const jsonParser = bodyParser.json()
+
+// Body-parser middleware
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 
 
-exports.postRegister = async(req,res,next)=>{
-    const newUser= new sheBuilds(req.body);
+exports.postRegister = tryCatch(async(req,res,next)=>{
+    console.log(req.body)
+    const newUser= new User(req.body);
+    console.log(newUser.name);
     if(
-        !newUser.name||
-        !newUser.age||
-        !newUser.email||
-        !newUser.phoneNo||
-        !newUser.username||
+        !newUser.name ||
+        !newUser.age ||
+        !newUser.email ||
+        !newUser.phoneNo || 
+        !newUser.username ||
         !newUser.password
     ){
-        // return next("provide all fields");
+        
+        throw new AppError(300,"input field not provided",404)
 
     }
-    if(req.user.role=="user"){
-        // return next("User not Autthoried for this function")
-    }
+    
 
     newUser.save();
     res.status(201).json({
@@ -36,19 +40,19 @@ exports.postRegister = async(req,res,next)=>{
             newUser,
         },
     });
-}
+})
 
 
-exports.getRegister = async(req,res,next)=>{
+exports.getRegister = tryCatch(async(req,res,next)=>{
     
-    const newUser = await sheBuilds.find(); 
+    const newUser = await User.find(); 
     res.status(201).json({
         status:"succsess",
         data: {
             newUser,
         },
     });
-}
+})
 
 
 
