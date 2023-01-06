@@ -10,33 +10,34 @@
     <div class="container">
       <div class="title">Jobs</div>
       <div class="content">
-        <form action="#">
+        <form action="/employerpost" method="post">
           <div class="user-details">
             <div class="input-box">
               <span class="details">Job Name</span>
-              <input type="text" placeholder="Enter job name" required />
+              <input type="text"  name="name" placeholder="Enter job name" required />
             </div>
             <div class="input-box">
               <span class="details">Work Description</span>
               <input
                 type="text"
                 placeholder="Enter work description"
+                name="work"
                 required
               />
             </div>
             <div class="input-box">
               <span class="details">Salary</span>
-              <input type="text" placeholder="Enter salary" required />
+              <input type="text" placeholder="Enter salary" name="salary" required />
             </div>
             <div class="input-box">
               <span class="details">Address</span>
-              <input type="text" placeholder="Enter address" required />
+              <input type="text" placeholder="Enter address" name="address" required />
             </div>
           </div>
           <div class="gender-details">
-            <input type="radio" name="gender" id="dot-1" />
-            <input type="radio" name="gender" id="dot-2" />
-            <input type="radio" name="gender" id="dot-3" />
+            <input type="radio" name="workmode" id="dot-1" value="home"/>
+            <input type="radio" name="workmode" id="dot-2" value="remote"/>
+            <input type="radio" name="workmode" id="dot-3" value="onsite"/>
             <span class="gender-title">Work Mode</span>
             <div class="category">
               <label for="dot-1">

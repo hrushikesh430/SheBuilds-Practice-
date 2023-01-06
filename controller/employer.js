@@ -52,10 +52,7 @@ exports.getEmployer = tryCatch(async(req,res,next)=>{
     const employeer = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN)
     const data1 = employeer.newUser[0].name;
     const newEmployer = await Employer.find(); 
-    res.status(201).json({
-        status:"succsess",
-        data: data1
-    });
+    res.render("employerpost")
 })
 
 

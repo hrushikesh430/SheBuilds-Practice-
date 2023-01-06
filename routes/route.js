@@ -24,6 +24,6 @@ router.post('/register',register.postRegister);
 
 // employer application request
 router.get('/employerpost',authetication,employer.getEmployer);
-router.post('/employerpost',authetication,employer.postEmployer);
+router.post('/employerpost',employer.postEmployer);
 
 module.exports = router;    
