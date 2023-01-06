@@ -11,12 +11,12 @@ const sheBuildsEmployer = new mongoose.Schema({
     },
     salary:{
         type:Number,
-        possibleValues:["Home","Work","Remote"],
         required :[true,"Please provide your salary"]  
     },
     workmode :{
-        type:Radio,
-        required :[true,"Please provide your workmode"]  
+        type:String,
+        required :[true,"Please provide your workmode"] ,
+        // possibleValues:["Home","Work","Remote"],
     },
     address:{
         type:String,

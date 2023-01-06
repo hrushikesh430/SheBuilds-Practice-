@@ -5,6 +5,7 @@ const bodyParser = require("body-parser")
 const errorHandler = require("./middleware/errorHandler")
 const tryCatch = require("./utils/tryCatch")
 const AppError = require("./utils/AppError")
+const cookieParser = require("cookie-parser");
 const route = require("./routes/route")
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ const PORT = 5000 || process.env.PORT;
 // Body-parser middleware
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+app.use(cookieParser());
 
 // connecting db
 mongoose.set('strictQuery', false);
