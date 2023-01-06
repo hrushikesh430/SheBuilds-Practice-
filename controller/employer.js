@@ -11,7 +11,7 @@ const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
 const jsonParser = bodyParser.json()
 const cookieParser = require("cookie-parser");
-
+ let num = 0;
 // Body-parser middleware
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:false}))
@@ -21,7 +21,12 @@ app.use(bodyParser.json())
 exports.postEmployer = tryCatch(async(req,res,next)=>{
     console.log(req.body)
     const newEmployer= new Employer(req.body);
-    console.log(newEmployer.name);
+    newEmployer.workid = num;
+    num = num +1;
+    const user = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN);
+    newEmployer.key = user.newUser[0]._id;
+    // console.log("thsdfosdjf   "+user.newUser[0]._id)
+    // console.log(newEmployer.name);
     if(
         !newEmployer.name ||
         !newEmployer.work ||

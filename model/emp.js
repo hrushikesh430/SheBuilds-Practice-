@@ -22,6 +22,14 @@ const sheBuildsEmployer = new mongoose.Schema({
         type:String,
         required :[true,"Please provide your address"]  
     },
+    workid:{
+        type:Number,
+        required :[true,"Please provide your workid"]  
+
+    },
+    key:{
+        type:String
+    }
 
 });
 const Employer = mongoose.model("sheBuildsEmp",sheBuildsEmployer); 
