@@ -6,11 +6,16 @@ const errorHandler = require("./middleware/errorHandler")
 const tryCatch = require("./utils/tryCatch")
 const AppError = require("./utils/AppError")
 const cookieParser = require("cookie-parser");
+const path =require('path');
 const route = require("./routes/route")
 dotenv.config();
 const app = express();
 const PORT = 5000 || process.env.PORT;
 
+// serving static files
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'));
+app.use(express.static(__dirname + '/public'));
 
 
 // Body-parser middleware
@@ -27,9 +32,6 @@ console.log(mongoose.connection.readyState);
 
 
 
-// serving static files
-app.use(express.static('public'));
-app.set('view engine','ejs');
 
 
 const getUser = ()=> undefined;
@@ -37,24 +39,14 @@ const getUser = ()=> undefined;
 app.get('/', tryCatch( async (req,res,next)=>{
 
     
-        const user = getUser();
-        console.log(user)
-        if(!user){
-            throw new AppError(300,"this is AppError",400);
-        }
-
-
- 
-      res.send("hello");
+        res.render("landing")
 })
 );
-app.get('/home',(req,res)=>{
-  res.render('layout',{name:"my name is thapa"});
-});
+
 
 //middleware
 app.use(errorHandler);
-app.use('/v1/api',route)
+app.use(route)
 
 
 

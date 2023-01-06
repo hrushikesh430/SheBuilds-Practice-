@@ -40,6 +40,8 @@ exports.postLogin = tryCatch(async(req,res,next)=>{
         },
         accesssToken : accesssToken
     });
+
+    //redner to all jobs
 })
 
 
@@ -47,12 +49,7 @@ exports.postLogin = tryCatch(async(req,res,next)=>{
 exports.getLogin = tryCatch(async(req,res,next)=>{
     
     
-    res.status(201).json({
-        status:"succsess",
-        data: {
-            
-        },
-    });
+    res.render("login")
 })
 
 app.use(authetication);

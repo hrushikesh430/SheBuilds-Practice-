@@ -1,7 +1,7 @@
 const AppError = require("../utils/AppError")
 
  const errorHandler = (error,req,res,next)=>{
-    console.log("thisss ssss")
+    console.log("App Error")
 
     // we can check error.name == validation ans all stuffs
     if(error instanceof AppError)

@@ -34,24 +34,13 @@ exports.postRegister = tryCatch(async(req,res,next)=>{
     
 
     newUser.save();
-    res.status(201).json({
-        status:"succsess",
-        data: {
-            newUser,
-        },
-    });
+    res.render("landing");
 })
 
 
 exports.getRegister = tryCatch(async(req,res,next)=>{
     
-    const newUser = await User.find(); 
-    res.status(201).json({
-        status:"succsess",
-        data: {
-            newUser,
-        },
-    });
+   res.render("register")
 })
 
 
