@@ -1,0 +1,374 @@
+<html>
+  <head>
+    <title>AllJobs</title>
+    <link href="alljobsstyle.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="full-banner-warapper">
+      <div class="shop-header">
+        <h1>See All Jobs here!!</h1>
+        <h3>- Job List -</h3>
+      </div>
+
+      <div class="wrapper next-row">
+        <div class="sort-options">
+          <select name="" id="">
+            <option value="1">By Salary</option>
+            <option value="2">By Work Mode</option>
+            <option value="3">By Latest</option>
+          </select>
+        </div>
+        <div class="wid-25 arrange-left">
+          <h3>Filter By Salary</h3>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="price-all"
+            />
+            <label class="custom-control-label" for="price-all"
+              >All Salary</label
+            >
+            <span class="filter-prod-count">1000</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="0-100"
+            />
+            <label class="custom-control-label" for="0-100">Rs0 - Rs100</label>
+            <span class="filter-prod-count">100</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="100-200"
+            />
+            <label class="custom-control-label" for="100-200"
+              >Rs100 - Rs200</label
+            >
+            <span class="filter-prod-count">150</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="200-300"
+            />
+            <label class="custom-control-label" for="200-300"
+              >Rs200 - Rs300</label
+            >
+            <span class="filter-prod-count">160</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="300-above"
+            />
+            <label class="custom-control-label" for="300-above"
+              >Rs300 - Rsabove</label
+            >
+            <span class="filter-prod-count">500</span>
+          </div>
+          <h3>Filter By Work Mode</h3>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="color-all"
+            />
+            <label class="custom-control-label" for="color-all">Home</label>
+            <span class="filter-prod-count">1000</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="black"
+            />
+            <label class="custom-control-label" for="black">Remote</label>
+            <span class="filter-prod-count">200</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="red"
+            />
+            <label class="custom-control-label" for="Red">OnSite</label>
+            <span class="filter-prod-count">150</span>
+          </div>
+
+          <h3>Filter By Size</h3>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="small"
+            />
+            <label class="custom-control-label" for="small">Small</label>
+            <span class="filter-prod-count">1000</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="m"
+            />
+            <label class="custom-control-label" for="m">Medium</label>
+            <span class="filter-prod-count">140</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="l"
+            />
+            <label class="custom-control-label" for="l">Large</label>
+            <span class="filter-prod-count">450</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="xl"
+            />
+            <label class="custom-control-label" for="xl">Extra Large</label>
+            <span class="filter-prod-count">130</span>
+          </div>
+          <div class="custom-control-check">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              checked=""
+              id="xxl"
+            />
+            <label class="custom-control-label" for="xxl">XXL</label>
+            <span class="filter-prod-count">50</span>
+          </div>
+        </div>
+        <div class="wid-75 arrange-left">
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://media.istockphoto.com/id/1153807572/photo/indian-woman-stock-image.jpg?s=612x612&w=0&k=20&c=6HGRjbqzbZja6NureG4RacXllSe-jrbF9hkFELiMkY4="
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://www.maxwoman.in/h-upload/2022/04/20/1600x960_1519766-.jpg"
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://images.adsttc.com/media/images/5238/bff8/e8e4/4eef/7900/01e8/large_jpg/IMG_2365.jpg?1379450840"
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://images.adsttc.com/media/images/5238/bff8/e8e4/4eef/7900/01e8/large_jpg/IMG_2365.jpg?1379450840"
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://www.maxwoman.in/h-upload/2022/04/20/1600x960_1519766-.jpg"
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://media.istockphoto.com/id/1153807572/photo/indian-woman-stock-image.jpg?s=612x612&w=0&k=20&c=6HGRjbqzbZja6NureG4RacXllSe-jrbF9hkFELiMkY4="
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://images.adsttc.com/media/images/5238/bff8/e8e4/4eef/7900/01e8/large_jpg/IMG_2365.jpg?1379450840"
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://media.istockphoto.com/id/1153807572/photo/indian-woman-stock-image.jpg?s=612x612&w=0&k=20&c=6HGRjbqzbZja6NureG4RacXllSe-jrbF9hkFELiMkY4="
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="wid-33 arrange-left">
+            <div class="cart">
+              <div>
+                <img
+                  src="https://www.maxwoman.in/h-upload/2022/04/20/1600x960_1519766-.jpg"
+                  style="height: 300"
+                  alt=""
+                />
+              </div>
+              <div class="cart-details">
+                <h6 class="name-head">Job Name:</h6>
+
+                <h6 class="name-head">Salary:</h6>
+                <h6 class="name-head">Work Mode :</h6>
+                <h6 class="name-head">Work Description :</h6>
+              </div>
+              <div class="cart-footer">
+                <button class="Apply">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
