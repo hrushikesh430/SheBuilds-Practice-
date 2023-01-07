@@ -8,6 +8,8 @@ dotenv.config();
 const User = require('../model/User')
 const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
+const EmployerData = require("../model/employers");
+const EmployeeData = require("../model/employee");
 const jsonParser = bodyParser.json()
 
 // Body-parser middleware
@@ -18,6 +20,12 @@ app.use(bodyParser.json())
 exports.postRegister = tryCatch(async(req,res,next)=>{
     console.log(req.body)
     const newUser= new User(req.body);
+    // newUser.name = req.body.name;
+    // newUser.email = req.body.email;
+    // newUser.age = req.body.age;
+    // newUser.phoneNo = req.body.phoneNo;
+    // newUser.username = req.body.username;
+    // newUser.password = req.body.password;
     console.log(newUser.name);
     if(
         !newUser.name ||
@@ -31,9 +39,27 @@ exports.postRegister = tryCatch(async(req,res,next)=>{
         throw new AppError(300,"input field not provided",404)
 
     }
+    newUser.save();
+    console.log(newUser._id);
+    if(req.body.applyType == 1)
+    {
+        const employer = new EmployerData();
+        employer.key = newUser._id;
+        employer.jobsposted = 0;
+        employer.hired = 0;
+        employer.save();
+    }
+    if(req.body.applyType == 2)
+    {
+        const employee = new EmployeeData();
+        employee.key = newUser._id;
+        employee.jobsapplied = 0;
+        employee.jobsdone = 0;
+        employee.save();
+    }
     
 
-    newUser.save();
+    
     res.render("landing");
 })
 

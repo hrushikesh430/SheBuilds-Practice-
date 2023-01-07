@@ -7,7 +7,9 @@ const login = require("../controller/login")
 const employer = require("../controller/employer");
 const alljobs = require('../controller/alljobs')
 const applyjob = require("../controller/apply")
+const userprofile = require("../controller/employeeProfile")
 const authetication = require("../middleware/authetication");
+const employerprofile = require("../controller/employerProfile");
 const cookieParser = require("cookie-parser");
 // Body-parser middleware
 app.use(bodyParser.urlencoded({extended:false}))
@@ -34,6 +36,15 @@ router.get('/alljobs',alljobs.getalljobs);
 
 
 // emloyee job apply
-router.post('/jobapply',applyjob.postApply);
+router.post('/applyjob',applyjob.postApply);
+router.get('/applyjob',applyjob.getApply);
+
+
+
+//employee profile
+router.get('/employeeuserprofile',userprofile.getEmployee);  
+
+//employer profile
+router.get('/employerprofile',employerprofile.getEmployer);
 
 module.exports = router;    

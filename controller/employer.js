@@ -9,6 +9,7 @@ const jwt = require("jsonwebtoken");
 const Employer = require('../model/emp')
 const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
+const EmployerData = require("../model/employers");
 const jsonParser = bodyParser.json()
 const cookieParser = require("cookie-parser");
  let num = 0;
@@ -25,8 +26,7 @@ exports.postEmployer = tryCatch(async(req,res,next)=>{
     num = num +1;
     const user = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN);
     newEmployer.key = user.newUser[0]._id;
-    // console.log("thsdfosdjf   "+user.newUser[0]._id)
-    // console.log(newEmployer.name);
+    
     if(
         !newEmployer.name ||
         !newEmployer.work ||
@@ -38,16 +38,16 @@ exports.postEmployer = tryCatch(async(req,res,next)=>{
         throw new AppError(300,"input field not provided",404)
 
     }
+    console.log(newEmployer);
+    newEmployer.save();
+
+    const employerData = await EmployerData.findOneAndUpdate({key:user.newUser[0]._id},{$inc:{jobsposted:1}});
+    console.log(employerData)
+
+   
     
 
-    newEmployer.save();
-    res.status(201).json({
-        
-        status:"succsess",
-        data: {
-            newEmployer,
-        },
-    });
+    res.redirect("/employerprofile")
 })
 
 

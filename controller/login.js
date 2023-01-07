@@ -24,7 +24,7 @@ exports.postLogin = tryCatch(async(req,res,next)=>{
         throw AppError(300,"Invalid username or password",404);
     }
     const newUser = await User.find({username,password});
-     
+     console.log(newUser)
     if(!newUser)
     {
         throw AppError(300,"User Not Found",404);
@@ -32,14 +32,16 @@ exports.postLogin = tryCatch(async(req,res,next)=>{
 
     const accesssToken = jwt.sign({newUser},process.env.ACCESS_TOKEN);
     
-    res.cookie("access_token",accesssToken).status(201).json({
-        status:"succsess",
-        data: {
-            newUser,
+    res.redirect("/alljobs")
+
+    // res.cookie("access_token",accesssToken).status(201).json({
+    //     status:"succsess",
+    //     data: {
+    //         newUser,
             
-        },
-        accesssToken : accesssToken
-    });
+    //     },
+    //     accesssToken : accesssToken
+    // });
 
     //redner to all jobs
 })

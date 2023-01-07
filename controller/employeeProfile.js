@@ -21,10 +21,10 @@ app.use(bodyParser.json())
 exports.getEmployee= tryCatch(async(req,res,next)=>{
     
     const employee = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN)
-    const data1 = employee.newUser[0].name;
+    const data1 = employee.newUser[0];
     const newEmployee = await User.find();
      
-    res.render("employeepost") 
+    res.render("employeeuserprofile",{username:data1.username,name:data1.name,email:data1.email,phoneNo:data1.phoneNo,jobsdone:data1.jobsdone,jobsapplied:data1.jobsapplied}); 
     
 })
 

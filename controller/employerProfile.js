@@ -9,6 +9,7 @@ const jwt = require("jsonwebtoken");
 const Employer = require('../model/emp')
 const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
+const EmployerData = require("../model/employers");
 const jsonParser = bodyParser.json()
 const cookieParser = require("cookie-parser");
 
@@ -21,10 +22,12 @@ exports.getEmployer = tryCatch(async(req,res,next)=>{
     
 
     const employeer = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN)
-    const data1 = employeer.newUser[0].name;
-    const newEmployer = await Employer.find();
+    const data1 = employeer.newUser[0];
+    console.log(data1);
+    const employerData = await EmployerData.find({key:employeer.newUser[0]._id})
+    console.log(employerData);
      
-    res.render("employerpost")
+    res.render("employerprofile",{username:data1.username,name:data1.name , email:data1.email,phoneNo:data1.phoneNo,josbposted:employerData[0].jobsposted,hired:employerData[0].hired});
 })
 
 
