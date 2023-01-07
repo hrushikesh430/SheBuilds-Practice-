@@ -16,17 +16,17 @@
         <div class="right-side">
           <div class="topic-text">  Enter your work Experience</div>
           
-          <form action="#">
+          <form action="/applyjob" method="post">
             <div class="input-box message-box">
                
-              <input type="text" placeholder="Enter your Work Experience with this work" />
+              <input type="text" name="workExp" placeholder="Enter your Work Experience with this work" />
             </div>
             <div class="input-box">
                 <span>Enter work id</span>
-                <input type="number" placeholder="Enter the work Id mentioned with the job" />
+                <input type="number" name="workid" placeholder="Enter the work Id mentioned with the job" />
               </div>
             <div class="button">
-              <input type="button" value="Apply Now" />
+              <button type="submit" value="Apply Now" >Submit</button>
             </div>
           </form>
         </div>

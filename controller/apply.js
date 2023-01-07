@@ -15,7 +15,7 @@ const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
 const JobApply = require("../model/jobsapply")
 const jsonParser = bodyParser.json()
-
+const EmployeeData = require("../model/employee");
 // Body-parser middleware
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
@@ -28,11 +28,13 @@ exports.postApply = tryCatch(async(req,res,next)=>{
     const workApp = await Employer.find({workid:workid});
     const user = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN);
     // newEmployer.key = user.newUser[0]._id;
-    console.log(workApp);
-    const applyUser = new JobApply({workid:workid,workexp:workExp,userId:user.newUser[0]._id})
+    // console.log(workApp);
+    const employeeData = await EmployeeData.findOneAndUpdate({key:user.newUser[0]._id},{$inc:{jobsapplied:1}});
+    console.log(employeeData)
+    const applyUser = new JobApply({workid:req.body.workid,workexp:req.body.workExp,userId:user.newUser[0]._id})
     applyUser.save();
     
-    res.render("applyjob");
+    res.redirect("alljobs");
 })
 
 

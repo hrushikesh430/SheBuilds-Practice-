@@ -24,8 +24,7 @@ exports.getalljobs = tryCatch(async (req,res,next)=>{
 
     const employerpost =await Employer.find({});
     const count = await Employer.countDocuments({});
-    console.log("thiissssssssssss")
-    console.log(count);
+   
 
 
 
@@ -54,12 +53,12 @@ exports.getalljobs = tryCatch(async (req,res,next)=>{
             <h6 class="name-head">Work Id :${employerpost[i].workid}</h6>
           </div>
           <div class="cart-footer">
-            <button class="Apply">Apply</button>
+            <button class="Apply"><a href="/applyjob">Apply</a></button>
           </div>
         </div>
       </div>`
 
-    console.log(code)
+    
     }
     res.render("alljobs",{data:code});
 

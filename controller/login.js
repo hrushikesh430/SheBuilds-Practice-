@@ -31,8 +31,7 @@ exports.postLogin = tryCatch(async(req,res,next)=>{
     }
 
     const accesssToken = jwt.sign({newUser},process.env.ACCESS_TOKEN);
-    
-    res.redirect("/alljobs")
+    res.cookie("access_token",accesssToken).redirect("/alljobs")
 
     // res.cookie("access_token",accesssToken).status(201).json({
     //     status:"succsess",

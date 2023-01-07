@@ -25,7 +25,7 @@ const autheticationToken =  (req,res,next)=>{
         throw new AppError(300,"token expire",403);
     }
    } catch (error) {
-        return res.json({status :"failure"});
+        return res.render("register");
    }
     
 

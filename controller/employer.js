@@ -47,7 +47,8 @@ exports.postEmployer = tryCatch(async(req,res,next)=>{
    
     
 
-    res.redirect("/employerprofile")
+    // res.render("employerprofile")
+    res.redirect('/employerprofile')
 })
 
 

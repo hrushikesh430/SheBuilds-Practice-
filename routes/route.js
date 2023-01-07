@@ -10,6 +10,8 @@ const applyjob = require("../controller/apply")
 const userprofile = require("../controller/employeeProfile")
 const authetication = require("../middleware/authetication");
 const employerprofile = require("../controller/employerProfile");
+const listallapplied = require("../controller/listpostedjobs");
+const logout = require('../controller/logout');
 const cookieParser = require("cookie-parser");
 // Body-parser middleware
 app.use(bodyParser.urlencoded({extended:false}))
@@ -28,7 +30,7 @@ router.post('/register',register.postRegister);
 
 // employer application request
 router.get('/employerpost',authetication,employer.getEmployer);
-router.post('/employerpost',employer.postEmployer);
+router.post('/employerpost',authetication,employer.postEmployer);
 
 
 // alljobs
@@ -36,15 +38,23 @@ router.get('/alljobs',alljobs.getalljobs);
 
 
 // emloyee job apply
-router.post('/applyjob',applyjob.postApply);
-router.get('/applyjob',applyjob.getApply);
+router.post('/applyjob',authetication,applyjob.postApply);
+router.get('/applyjob',authetication,applyjob.getApply);
 
 
 
 //employee profile
-router.get('/employeeuserprofile',userprofile.getEmployee);  
+router.get('/employeeuserprofile',authetication,userprofile.getEmployee);  
 
 //employer profile
-router.get('/employerprofile',employerprofile.getEmployer);
+router.get('/employerprofile',authetication,employerprofile.getEmployer);
+
+//list of all jobs applied
+router.get('/listallapplied',authetication,listallapplied.getListAppliedJobs);
+
+
+
+//logout
+router.get('/logout',logout.logout);
 
 module.exports = router;    
