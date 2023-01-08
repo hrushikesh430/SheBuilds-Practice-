@@ -10,7 +10,7 @@ const tryCatch = require("../utils/tryCatch");
 const autheticationToken =  (req,res,next)=>{
   
     const token = req.cookies.access_token;
-   console.log(token);
+//    console.log(token);
 
    try {
     if(token == null) throw new AppError(300,"have no access",401);
@@ -25,7 +25,7 @@ const autheticationToken =  (req,res,next)=>{
         throw new AppError(300,"token expire",403);
     }
    } catch (error) {
-        return res.json({status :"failure"});
+        return res.render("register");
    }
     
 

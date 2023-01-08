@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const alljobsApply = new mongoose.Schema({
     workid:{
-        type:String,
+        type:Number,
         required :[true,"Please provide your name"]  
     },
     workexp:{
