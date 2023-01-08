@@ -10,6 +10,7 @@ const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
 const EmployerData = require("../model/employers");
 const EmployeeData = require("../model/employee");
+const { db } = require("../model/jobsapply");
 const jsonParser = bodyParser.json()
 
 // Body-parser middleware
@@ -39,6 +40,10 @@ exports.postRegister = tryCatch(async(req,res,next)=>{
         throw new AppError(300,"input field not provided",404)
 
     }
+    newUser.location.coordinates[0] = 0;
+    newUser.location.coordinates[1] = 0;
+    newUser.location.type = "Point"
+        // db('test').User.createIndex({"location":"2d"});
     newUser.save();
     console.log(newUser._id);
     if(req.body.applyType == 1)

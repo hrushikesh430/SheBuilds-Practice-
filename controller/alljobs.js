@@ -1,5 +1,5 @@
 // for adding experiance and to apply for job/work
-
+const jwt = require("jsonwebtoken")
 const express =require("express");
 const ejs=require("ejs");
 const app = express();
@@ -14,20 +14,31 @@ const User = require('../model/User')
 const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
 const jsonParser = bodyParser.json()
-
+const math = require("/usr/local/lib/node_modules/mathjs")
 const fun =require("../controller/samplecall");
 
 // Body-parser middleware
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 
-
+// 
 exports.getalljobs = tryCatch(async (req,res,next)=>{
 
-    const employerpost =await Employer.find({});
+  const user = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN);
+  const userData = await User.find({_id:user.newUser[0]._id});
+    const employerpost =await Employer.find({location:{ $near: {$geometry:{coordinates:[userData[0].location.coordinates[0],userData[0].location.coordinates[1]],type:"Point"}}}});
     const count = await Employer.countDocuments({});
    
-
+    // console.log(userData);
+    // console.log(employerData)
+    let sortedData = [];
+    // for(let i = 0 ; i < count ; i++)
+  
+    // for(let i = 0; i < count ; i++)
+    // {
+    //   console.log("this is ")
+    //   console.log(sortedData[i]);
+    // }
 
 
     let code = ``;

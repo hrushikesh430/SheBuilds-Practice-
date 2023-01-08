@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const { type } = require("os");
 
 const sheBuildsUser = new mongoose.Schema({
     name:{
@@ -24,7 +25,20 @@ const sheBuildsUser = new mongoose.Schema({
     password:{
         type:String,
         required :[true,"Please provide your password"] 
+    },
+    location:{
+        type:{
+            type:String
+          },
+        coordinates:{
+            type:Array
+        },
+        
     }
+
+
+   
+
 
 
 

@@ -29,6 +29,15 @@ const sheBuildsEmployer = new mongoose.Schema({
     },
     key:{
         type:String
+    },
+    location:{
+        type:{
+            type:String
+          },
+        coordinates:{
+            type:Array
+        },
+        
     }
 
 });

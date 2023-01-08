@@ -32,7 +32,7 @@ exports.getAcceptedJobs = tryCatch(async(req,res)=>{
     const acceptedData = await AcceptedList.find({applicantUserId : user.newUser[0]._id})
     // console.log(acceptedData[0]);
     const employeeData = await EmployeeData.findOneAndUpdate({key:user.newUser[0]._id},{$inc:{jobsdone:1}})
-    console.log(employeeData);
+    // console.log(employeeData);
     const count = await AcceptedList.countDocuments({applicantUserId : user.newUser[0]._id})
     // console.log(count)
     let code = ``;
@@ -57,7 +57,7 @@ exports.getAcceptedJobs = tryCatch(async(req,res)=>{
             <form action="/clickedAcc" method="post">
             
               
-            <button class="card-btn" name="butt1" value="{data[i].name}+{data[i].workid}+{infoUser[j][0]._id}+{data[i].key}" type="submit">Accept</button>
+            <button class="card-btn" name="butt1" value="{data[i].name}+{data[i].workid}+{infoUser[j][0]._id}+{data[i].key}" type="submit">Accepted</button>
             </form>
             </div>
         </div>

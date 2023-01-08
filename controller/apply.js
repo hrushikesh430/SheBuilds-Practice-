@@ -30,7 +30,7 @@ exports.postApply = tryCatch(async(req,res,next)=>{
     // newEmployer.key = user.newUser[0]._id;
     // console.log(workApp);
     const employeeData = await EmployeeData.findOneAndUpdate({key:user.newUser[0]._id},{$inc:{jobsapplied:1}});
-    console.log(employeeData)
+    // console.log(employeeData)
     const applyUser = new JobApply({workid:req.body.workid,workexp:req.body.workExp,userId:user.newUser[0]._id})
     applyUser.save();
     
