@@ -14,7 +14,7 @@ const User = require('../model/User')
 const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
 const jsonParser = bodyParser.json()
-const math = require("/usr/local/lib/node_modules/mathjs")
+
 const fun =require("../controller/samplecall");
 
 // Body-parser middleware
