@@ -16,6 +16,7 @@
             <li><a href="#">ContactUs</a></li>
             <li><a href="/login" class="btn">Login</a></li>
             <li><a href="/register" class="btn">Signup</a></li>
+            <li><div id="google_Translate_element">Translate</div></li>
           </ul>
         </div>
 
@@ -24,4 +25,13 @@
       </div>
     </header>
   </div>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function  googleTranslateElementInit(){
+      new google.translate.TranslateElement(
+        {pageLanguage: 'en'},
+        'google_Translate_element'
+      );
+    }
+  </script>
 </main>
