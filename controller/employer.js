@@ -8,6 +8,7 @@ dotenv.config();
 const jwt = require("jsonwebtoken");
 const Employer = require('../model/emp')
 const AppError = require("../utils/AppError")
+const User= require("../model/User")
 const tryCatch = require("../utils/tryCatch")
 const EmployerData = require("../model/employers");
 const jsonParser = bodyParser.json()
@@ -26,6 +27,9 @@ exports.postEmployer = tryCatch(async(req,res,next)=>{
     num = num +1;
     const user = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN);
     newEmployer.key = user.newUser[0]._id;
+    const userData = await User.find({_id:user.newUser[0]._id});
+    // console.log(userData[0].location);
+    // console.log("this is s")
     
     if(
         !newEmployer.name ||
@@ -38,11 +42,15 @@ exports.postEmployer = tryCatch(async(req,res,next)=>{
         throw new AppError(300,"input field not provided",404)
 
     }
-    console.log(newEmployer);
+    newEmployer.location.coordinates[0] = userData[0].location.coordinates[0];
+    newEmployer.location.coordinates[1] = userData[0].location.coordinates[1];
+    newEmployer.location.type = "Point"
+    // console.log(newEmployer);
     newEmployer.save();
 
+
     const employerData = await EmployerData.findOneAndUpdate({key:user.newUser[0]._id},{$inc:{jobsposted:1}});
-    console.log(employerData)
+    // console.log(employerData)
 
    
     

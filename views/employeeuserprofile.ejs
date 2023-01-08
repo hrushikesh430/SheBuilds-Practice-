@@ -41,15 +41,39 @@
         </ul>
         <ul>
           <h3>
-            <form action="">
+            <form action="/acceptedList">
               <button class="button">View Jobs Applied</button>
             </form>
           </h3>
         </ul>
         <ul>
-          <button class="button">Add Current Location</button>
+          <form action="/getlocation" method="post">
+            <button class="button1" id="location"  name="buttonLoc" >Add Current Location</button>
+          </form>
         </ul>
       </div>
     </div>
-  </body>
+    <script>
+
+      
+      navigator.geolocation.getCurrentPosition(function(position) {
+
+const latitude = position.coords.latitude;
+const longitude = position.coords.longitude;
+const altitude = position.coords.altitude;
+const accuracy = position.coords.accuracy;
+const altitudeAccuracy = position.coords.altitudeAccuracy;
+const heading = position.coords.height;
+const speed = position.coords.speed;
+const timestamp = position.timestamp;
+
+// console.log(latitude);
+// console.log(document.getElementById("location"))
+document.getElementById('location').setAttribute("value",latitude+" "+longitude);
+// work with this information however you'd like!
+});
+    
+
+  </script>
+  </body> 
 </html>

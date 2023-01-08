@@ -26,8 +26,8 @@ exports.getListAppliedJobs = tryCatch(async(req,res)=>{
     const user = jwt.verify(req.cookies.access_token,process.env.ACCESS_TOKEN);
     const data = await Employer.find({key:user.newUser[0]._id});
     const count = await Employer.countDocuments({key:user.newUser[0]._id});
-    console.log(data);
-    console.log(count);
+    // console.log(data);
+    // console.log(count);
 
     let code = ``;
     for(let i =0 ; i < count ; i++){
@@ -36,11 +36,14 @@ exports.getListAppliedJobs = tryCatch(async(req,res)=>{
         count1 = await JobApply.countDocuments({workid:data[i].workid})
         // console.log(appliedUser)
         let infoUser=[];
+        let workExp = [];
          for(let j = 0 ; j < count1 ; j++){
 
             infoUser[j] = await User.find({_id:appliedUser[j].userId})       
-            
-         }
+          }
+        //   workExp[0] = await JobApply.find({userId:appliedUser[0].userId})
+        //  console.log("this is ep")
+        //  console.log(workExp[0])
          for(let j =0 ; j < count1 ; j++)
          {
             // console.log("thissss ");
@@ -57,12 +60,14 @@ exports.getListAppliedJobs = tryCatch(async(req,res)=>{
              <h3>Age: ${infoUser[j][0].age}</h3>
              <h3>Phone Number: ${infoUser[j][0].name}</h3>
              <h3 >Address: ${infoUser[j][0].name}</h3>
+             <h3 >Work Experience : ${appliedUser[j].workexp} </h3>
+
            
             </p>
             <form action="/clickedAcc" method="post">
             
               
-            <button class="card-btn" name="butt1" value="${data[i].name}+${data[i].workid}+${infoUser[j][0]._id}+${data[i].key}" type="submit">Accept</button>
+            <button class="card-btn" id="${i}${j}"  onClick = "reply_click(this.id)" name="butt1" value="${data[i].name}+${data[i].workid}+${infoUser[j][0]._id}+${data[i].key}" type="submit">Accept</button>
             </form>
             </div>
         </div>

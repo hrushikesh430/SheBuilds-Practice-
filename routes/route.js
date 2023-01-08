@@ -12,6 +12,7 @@ const authetication = require("../middleware/authetication");
 const employerprofile = require("../controller/employerProfile");
 const listallapplied = require("../controller/listpostedjobs");
 const clickedAcc = require('../controller/samplecall');
+const getLocation = require("../controller/getLcoation");
 const acceptedList = require('../controller/acceptedJobsList')
 const logout = require('../controller/logout');
 const cookieParser = require("cookie-parser");
@@ -54,8 +55,8 @@ router.get('/employerprofile',authetication,employerprofile.getEmployer);
 //list of all jobs applied
 router.get('/listallapplied',authetication,listallapplied.getListAppliedJobs);
 
-
-
+// get location
+router.post('/getlocation',getLocation.getLocation);
 //logout
 router.get('/logout',logout.logout);
 
