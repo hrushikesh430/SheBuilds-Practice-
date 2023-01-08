@@ -9,7 +9,11 @@
   --lightOne: #919191;
   --lightTwo: #aaa;
 }
-
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 .dark {
   --mainColor: #830e38;
   --hoverColor: #e6c2bf;
