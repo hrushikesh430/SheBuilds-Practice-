@@ -205,6 +205,30 @@ header .container {
   }
 }
 
-#google_Translate_element {
-  margin-left: 3rem;
+#usericon {
+  width: 3rem;
+  margin-right: 0.6rem;
+  margin-top: -0.6rem;
+  margin: 2rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  align-items: center;
+}
+
+.dropdown-content a {
+  color: black;
+  margin: 1rem;
+  text-decoration: none;
+  display: block;
+}
+
+.usericon:hover .dropdown-content {
+  display: block;
 }
