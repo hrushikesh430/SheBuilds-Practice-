@@ -11,6 +11,8 @@ const userprofile = require("../controller/employeeProfile")
 const authetication = require("../middleware/authetication");
 const employerprofile = require("../controller/employerProfile");
 const listallapplied = require("../controller/listpostedjobs");
+const clickedAcc = require('../controller/samplecall');
+const acceptedList = require('../controller/acceptedJobsList')
 const logout = require('../controller/logout');
 const cookieParser = require("cookie-parser");
 // Body-parser middleware
@@ -56,5 +58,14 @@ router.get('/listallapplied',authetication,listallapplied.getListAppliedJobs);
 
 //logout
 router.get('/logout',logout.logout);
+
+
+// sample
+router.post('/clickedAcc',clickedAcc.call)
+
+
+// accepted job list
+router.get('/acceptedList',acceptedList.getAcceptedJobs);
+
 
 module.exports = router;    

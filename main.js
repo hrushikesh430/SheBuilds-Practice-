@@ -10,7 +10,7 @@ const path = require("path");
 const route = require("./routes/route");
 dotenv.config();
 const app = express();
-const PORT = 5004 || process.env.PORT;
+const PORT = 5002 || process.env.PORT;
 
 // serving static files
 app.set("view engine", "ejs");

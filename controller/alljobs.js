@@ -15,6 +15,8 @@ const AppError = require("../utils/AppError")
 const tryCatch = require("../utils/tryCatch")
 const jsonParser = bodyParser.json()
 
+const fun =require("../controller/samplecall");
+
 // Body-parser middleware
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
@@ -25,7 +27,6 @@ exports.getalljobs = tryCatch(async (req,res,next)=>{
     const employerpost =await Employer.find({});
     const count = await Employer.countDocuments({});
    
-
 
 
 

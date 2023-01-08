@@ -43,8 +43,8 @@ exports.getListAppliedJobs = tryCatch(async(req,res)=>{
          }
          for(let j =0 ; j < count1 ; j++)
          {
-            console.log("thissss ");
-           console.log(infoUser[0][0])
+            // console.log("thissss ");
+          //  console.log(infoUser[0][0])
  //  <h3>Work Experience: ${infoUser].name}</h3>
          code += `<div class="grid-item">
         <div class="card">
@@ -59,8 +59,12 @@ exports.getListAppliedJobs = tryCatch(async(req,res)=>{
              <h3 >Address: ${infoUser[j][0].name}</h3>
            
             </p>
-            <button class="card-btn">Accept</button>
-          </div>
+            <form action="/clickedAcc" method="post">
+            
+              
+            <button class="card-btn" name="butt1" value="${data[i].name}+${data[i].workid}+${infoUser[j][0]._id}+${data[i].key}" type="submit">Accept</button>
+            </form>
+            </div>
         </div>
       </div>`
         
